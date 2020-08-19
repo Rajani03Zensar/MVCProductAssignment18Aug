@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MVCAssignment.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products</h2>
+@if (!Model.Any())
+{
+    <text>No products Available</text>
+
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thread>
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Rate</th>
+            </tr>
+        </thread>
+        <tbody>
+           @foreach (var p in Model)
+            {
+            <tr>
+                <td>@p.ProductId</td>
+                <td>@Html.ActionLink(p.ProductName, "Details", "Product", new { id = p.ProductId },null)</td>
+                <td>@p.Rate</td>
+
+                
+
+            </tr>
+            
+            }
+        </tbody>
+    </table>
+}
+
